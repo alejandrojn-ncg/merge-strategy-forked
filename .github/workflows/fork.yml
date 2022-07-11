@@ -43,6 +43,9 @@ jobs:
       run: |
         echo $MERGE_RESULT
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Create PR
       if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
       uses: devops-infra/action-pull-request@v0.5.0
