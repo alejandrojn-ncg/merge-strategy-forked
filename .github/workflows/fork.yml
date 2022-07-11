@@ -49,7 +49,7 @@ jobs:
         ref: ${{ env.DATE }}_upstream
 
     - name: Create PR
-#      if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
+      if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
       uses: devops-infra/action-pull-request@v0.5.0
       with:
         github_token: ${{ env.WORKFLOW_TOKEN }}
