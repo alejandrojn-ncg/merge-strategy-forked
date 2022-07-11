@@ -48,7 +48,8 @@ then
   exit 1
 elif [[ $MERGE_RESULT != *"Already up to date."* ]]
 then
-  echo "DATE=$(date +"%y-%d-%mi-%H:%M:%S")" >> $GITHUB_ENV
+  DATE=$(date +"%y-%d-%mi-%H:%M:%S")
+  echo "DATE=${DATE}" >> $GITHUB_ENV
   echo "MERGE_RESULT='Merge upstream'" >> $GITHUB_ENV
   git commit -m "Merged upstream"
   git push origin ${DOWNSTREAM_BRANCH} || exit $?
