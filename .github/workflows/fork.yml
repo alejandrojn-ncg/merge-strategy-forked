@@ -37,4 +37,4 @@ jobs:
 #        echo $jobs.sync.sync.env.MERGE_RESULT
 
     - name: Sync Upstream Repo
-      run: ./sync ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
+      run: ./sync.sh ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
