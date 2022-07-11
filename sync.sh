@@ -54,10 +54,6 @@ then
   git push origin ${DOWNSTREAM_BRANCH} || exit $?
   git checkout -b ${DATE}_upstream
   git push origin ${DATE}_upstream
-  git config user.name "${GITHUB_ACTOR}"
-  git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-  git config --local user.password ${GITHUB_TOKEN}
-  git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
   hub pull-request -b main -h ${DATE}_upstream --no-edit
 else
   echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
