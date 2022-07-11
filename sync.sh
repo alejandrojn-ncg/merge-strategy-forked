@@ -6,6 +6,7 @@ UPSTREAM_REPO=$1
 UPSTREAM_BRANCH=$2
 DOWNSTREAM_BRANCH=$3
 GITHUB_TOKEN=$4
+ORG=$5
 
 if [[ -z "$UPSTREAM_REPO" ]]; then
   echo "Missing \$UPSTREAM_REPO"
@@ -54,7 +55,7 @@ then
   git push origin ${DOWNSTREAM_BRANCH} || exit $?
   git checkout -b ${DATE}_upstream
   git push origin ${DATE}_upstream
-  hub pull-request -b main -h ${DATE}_upstream --no-edit
+  hub pull-request -b ${ORG}:main -h ${DATE}_upstream --no-edit
 else
   echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 fi

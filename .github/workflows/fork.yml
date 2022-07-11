@@ -10,6 +10,7 @@ env:
   UPSTREAM_BRANCH: "main"
   # Optional, defaults to UPSTREAM_BRANCH
   DOWNSTREAM_BRANCH: "main_upstream"
+  ORG: "alejandrojn-ncg"
 
 on:
   workflow_dispatch:
@@ -36,7 +37,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Sync Upstream Repo
-      run: ./sync.sh ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
+      run: ./sync.sh ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }} ${{ env.ORG }}
 
     - name: Verify if new content
       run: |
