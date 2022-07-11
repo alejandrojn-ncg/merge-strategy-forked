@@ -42,15 +42,17 @@ git checkout ${DOWNSTREAM_BRANCH}
 git push origin
 
 MERGE_RESULT=$(git merge ${MERGE_ARGS} upstream/${UPSTREAM_BRANCH})
-echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 
 if [[ $MERGE_RESULT == "" ]] 
 then
   exit 1
 elif [[ $MERGE_RESULT != *"Already up to date."* ]]
 then
+  echo "MERGE_RESULT='Merge upstream'" >> $GITHUB_ENV
   git commit -m "Merged upstream"
   git push ${PUSH_ARGS} origin ${DOWNSTREAM_BRANCH} || exit $?
+else
+  echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 fi
 
 cd ..
