@@ -36,5 +36,8 @@ jobs:
 #      run: |
 #        echo $jobs.sync.sync.env.MERGE_RESULT
 
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Sync Upstream Repo
       run: ./sync.sh ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
