@@ -69,3 +69,12 @@ jobs:
         #ignore_users: "dependabot"
         allow_no_diff: true
 
+    - name: Slack Notification
+      if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: nexudus-listener
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_MESSAGE: 'New Upstream content :rocket:'
+        SLACK_TITLE: 'New Upstream content :rocket:'
