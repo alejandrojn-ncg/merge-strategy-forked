@@ -55,8 +55,6 @@ then
   git push origin ${DOWNSTREAM_BRANCH} || exit $?
   git checkout -b ${DATE}_upstream
   git push origin ${DATE}_upstream
-  sleep 15
-#  hub pull-request -b ${ORG}:main -h ${DATE}_upstream -m "New changes from Upstream at ${DATE}"
 else
   echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 fi
