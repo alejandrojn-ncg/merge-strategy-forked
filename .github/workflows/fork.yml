@@ -10,16 +10,7 @@ env:
   UPSTREAM_BRANCH: "main"
   # Optional, defaults to UPSTREAM_BRANCH
   DOWNSTREAM_BRANCH: "main_upstream"
-  # Optional fetch arguments
-  FETCH_ARGS: ""
-  # Optional merge arguments
-  MERGE_ARGS: ""
-  # Optional push arguments
-  PUSH_ARGS: ""
-  # Optional toggle to spawn time logs (keeps action active)
-  SPAWN_LOGS: "false" # "true" or "false"
 
-# This runs every day on 1801 UTC
 on:
   workflow_dispatch:
 
@@ -27,20 +18,23 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-    - name: GitHub Sync to Upstream Repository
-      id: sync
-      uses: dabreadman/sync-upstream-repo@v1.3.0
-      with:
-        upstream_repo: ${{ env.UPSTREAM_URL }}
-        upstream_branch: ${{ env.UPSTREAM_BRANCH }}
-        downstream_branch: ${{ env.DOWNSTREAM_BRANCH }}
-        token: ${{ env.WORKFLOW_TOKEN }}
-        fetch_args: ${{ env.FETCH_ARGS }}
-        merge_args: ${{ env.MERGE_ARGS }}
-        push_args: ${{ env.PUSH_ARGS }}
-        spawn_logs: ${{ env.SPAWN_LOGS }}
+#    - name: GitHub Sync to Upstream Repository
+#      id: sync
+#      uses: dabreadman/sync-upstream-repo@v1.3.0
+#      with:
+#        upstream_repo: ${{ env.UPSTREAM_URL }}
+#        upstream_branch: ${{ env.UPSTREAM_BRANCH }}
+#        downstream_branch: ${{ env.DOWNSTREAM_BRANCH }}
+#        token: ${{ env.WORKFLOW_TOKEN }}
+#        fetch_args: ${{ env.FETCH_ARGS }}
+#        merge_args: ${{ env.MERGE_ARGS }}
+#        push_args: ${{ env.PUSH_ARGS }}
+#        spawn_logs: ${{ env.SPAWN_LOGS }}
+#
+#    - name: Verify if new content
+#      id: check
+#      run: |
+#        echo $jobs.sync.sync.env.MERGE_RESULT
 
-    - name: Verify if new content
-      id: check
-      run: |
-        echo $jobs.sync.sync.env.MERGE_RESULT
+    - name: Sync Upstream Repo
+      run: ./sync ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
