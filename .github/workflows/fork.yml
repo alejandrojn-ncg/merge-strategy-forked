@@ -31,13 +31,13 @@ jobs:
 #        push_args: ${{ env.PUSH_ARGS }}
 #        spawn_logs: ${{ env.SPAWN_LOGS }}
 #
-#    - name: Verify if new content
-#      id: check
-#      run: |
-#        echo $jobs.sync.sync.env.MERGE_RESULT
 
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Sync Upstream Repo
       run: ./sync.sh ${{ env.UPSTREAM_URL }} ${{ env.UPSTREAM_BRANCH }} ${{ env.DOWNSTREAM_BRANCH }} ${{ env.WORKFLOW_TOKEN }}
+
+    - name: Verify if new content
+      run: |
+        echo $MERGE_RESULT

@@ -42,7 +42,7 @@ git checkout ${DOWNSTREAM_BRANCH}
 git push origin
 
 MERGE_RESULT=$(git merge ${MERGE_ARGS} upstream/${UPSTREAM_BRANCH})
-
+echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 
 if [[ $MERGE_RESULT == "" ]] 
 then
