@@ -42,23 +42,23 @@ jobs:
       run: |
         echo $MERGE_RESULT
 
-    - name: Create PR
-      if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
-      uses: devops-infra/action-pull-request@v0.5.0
-      with:
-        github_token: ${{ env.WORKFLOW_TOKEN }}
-        source_branch: ${{ env.DATE }}_upstream
-        target_branch: main 
-        title: New Upstream
-        #template: .github/PULL_REQUEST_TEMPLATE.md
-        body: "**Automated pull request**"
-        #reviewer: octocat
-        #assignee: octocat
-        #label: enhancement
-        #milestone: My milestone
-        #draft: true
-        #old_string: "<!-- Add your description here -->"
-        new_string: "** Automatic pull request**"
-        get_diff: false
-        #ignore_users: "dependabot"
-        allow_no_diff: true
+#    - name: Create PR
+#      if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
+#      uses: devops-infra/action-pull-request@v0.5.0
+#      with:
+#        github_token: ${{ env.WORKFLOW_TOKEN }}
+#        source_branch: ${{ env.DATE }}_upstream
+#        target_branch: main 
+#        title: New Upstream
+#        #template: .github/PULL_REQUEST_TEMPLATE.md
+#        body: "**Automated pull request**"
+#        #reviewer: octocat
+#        #assignee: octocat
+#        #label: enhancement
+#        #milestone: My milestone
+#        #draft: true
+#        #old_string: "<!-- Add your description here -->"
+#        new_string: "** Automatic pull request**"
+#        get_diff: false
+#        #ignore_users: "dependabot"
+#        allow_no_diff: true

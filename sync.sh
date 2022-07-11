@@ -55,6 +55,7 @@ then
   git push origin ${DOWNSTREAM_BRANCH} || exit $?
   git checkout -b ${DATE}_upstream
   git push origin ${DATE}_upstream
+  hub pull-request -b main -h ${DATE}_upstream --no-edit
 else
   echo "MERGE_RESULT=$MERGE_RESULT" >> $GITHUB_ENV
 fi
