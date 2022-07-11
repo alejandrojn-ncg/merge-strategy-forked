@@ -45,6 +45,8 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Create PR
       if: ${{ env.MERGE_RESULT != 'Already up to date.' }}
